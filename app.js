@@ -2,21 +2,17 @@
 $(document).ready(function() {
 	var phaseOnes = $('.phase1');
 	var phaseTwos = $('.phase2');
-	var prevButton = $("#prev-group");
-	var nextButton = $("#next-group");
+	var prevButton = $(".prev-group");
+	var nextButton = $(".next-group");
 	var leftBlock = $("#left-block");
 	var rightBlock = $("#right-block");
 	var icons = $('#icons > svg');
 	var speed = 300;
 
 	prevButton.on("click", function() {
-		nextButton.prop("disabled", false);
-		prevButton.prop("disabled", true);
 		moveTheBlocks(false);
 	});
 	nextButton.on("click", function() {
-		prevButton.prop("disabled", false);
-		nextButton.prop("disabled", true);
 		moveTheBlocks(true);
 	});
 
@@ -30,15 +26,12 @@ $(document).ready(function() {
 			do {
 				randomIndex = Math.floor(Math.random() * icons.length);
 			} while (randomIndex === notThisIndex);
-			console.log(notThisIndex, randomIndex);
 			notThisIndex = randomIndex;
 			return icons.eq(randomIndex);
 		}
 
 		leftBlock.html(getRandomIcon());
 		rightBlock.html(getRandomIcon());
-
-		//phaseTwos.css("top", midHeight);
 
 		phaseOnes.toggleClass('show');
 		setTimeout(function() {
